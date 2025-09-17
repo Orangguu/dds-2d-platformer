@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://qvao1rhfdbnk"]
+
+[ext_resource type="Script" uid="uid://ckb57hexnhes6" path="res://vanishingtile.gd" id="1_o2hts"]
+[ext_resource type="Texture2D" uid="uid://bvasfu802rdd2" path="res://assets/tiles/tiles/tile_map_set.png" id="1_ullpg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2hts"]
+size = Vector2(64.2857, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05gco"]
+size = Vector2(56, 7)
+
+[node name="VanishingTile" type="StaticBody2D"]
+collision_layer = 2048
+script = ExtResource("1_o2hts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, -8)
+scale = Vector2(0.84, 0.84)
+shape = SubResource("RectangleShape2D_o2hts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ullpg")
+hframes = 5
+vframes = 9
+frame = 44
+
+[node name="TriggerArea" type="Area2D" parent="."]
+collision_layer = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_05gco")
+
+[node name="VanishingTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="timeout" from="VanishingTimer" to="." method="_on_vanishing_timer_timeout"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ldb5n1tt1x2c"]
+
+[ext_resource type="Script" uid="uid://cnyu5sbgqugn" path="res://jumppad.gd" id="1_ai465"]
+[ext_resource type="Texture2D" uid="uid://sayw4cy0im8i" path="res://assets/tiles/objects/Bench.png" id="2_s47m4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d383q"]
+size = Vector2(81, 23)
+
+[node name="jumppad" type="Node2D"]
+script = ExtResource("1_ai465")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_s47m4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 31.5)
+shape = SubResource("RectangleShape2D_d383q")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -75,4 +75,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY	
 		animated_sprite.play("jump")
 		is_falling = false
+		
+	if Input.is_action_just_pressed("down") and is_on_floor():
+		position.y += 5
 	move_and_slide()

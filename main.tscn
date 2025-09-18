@@ -142,11 +142,14 @@ texture_region_size = Vector2i(32, 32)
 4:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0.476669, -16, -0.399563)
 4:8/0/physics_layer_1/polygon_0/one_way = true
 3:8/0 = 0
-3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:8/0/physics_layer_0/linear_velocity = Vector2(100, 0)
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0.31863, -16, 0, -16, 16)
 2:8/0 = 0
-2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:8/0/physics_layer_0/linear_velocity = Vector2(100, 0)
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0.31863, -16, 0, -16, 16)
 1:8/0 = 0
-1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:8/0/physics_layer_0/linear_velocity = Vector2(100, 0)
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0.31863, -16, 0, -16, 16)
 0:8/0 = 0
 0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
@@ -429,6 +432,12 @@ tile_set = SubResource("TileSet_kek77")
 z_index = -1
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD9/wAALQAIAAEAAAD///3/LQAAAAAAAAABAAAALQAGAAEAAAABAP3/LQADAAQAAAAlAPz/AAABAAMAAAAmAPz/AAABAAMAAAAmAP3/AAACAAIAAAAnAP3/AAACAAIAAAAnAP7/AAACAAIAAAAoAP7/AAACAAIAAAAoAP//AAACAAIAAAApAP//AAACAAIAAAApAP7/AAACAAIAAAApAP3/AAACAAIAAAApAPz/AAABAAMAAAAoAPz/AAABAAMAAAAnAPz/AAACAAIAAAAoAP3/AAACAAIAAAAnAP//AAACAAIAAAAmAP//AAACAAIAAAAmAP7/AAACAAIAAAAlAP7/AAACAAIAAAAlAP3/AAACAAIAAAAlAP//AAACAAIAAAAkAP3/AAADAAIAAAAkAPz/AAADAAEAAAAkAPv/AAADAAAAAAAlAPv/AAAEAAAAAAAmAPv/AAAEAAAAAAAoAPv/AAAEAAAAAAApAPv/AAAEAAAAAAAnAPv/AAACAAIAAAA=")
+tile_set = SubResource("TileSet_kek77")
+
+[node name="conveyor_belt" type="TileMapLayer" parent="tiles"]
+z_index = -1
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAqAPv/AAABAAgAAAArAPv/AAACAAgAAAAsAPv/AAADAAgAAAA=")
 tile_set = SubResource("TileSet_kek77")
 
 [node name="ladders" type="TileMapLayer" parent="tiles"]

@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.9
 var is_falling = false
 var on_ladder: bool
 var climbing: bool
+var spawn_position: Vector2 
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -19,7 +20,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	on_ladder = false
 	animated_sprite.play("idle")
-
+	
+func _ready() -> void:
+	var spawn_point = get_tree().get_first_node_in_group("spawn") 
+	if spawn_point:
+		spawn_position = spawn_point.global_position
+	else:
+		spawn_position = global_position 
+		
+func respawn() -> void:
+	global_position = spawn_position
+	velocity = Vector2.ZERO  # reset momentum 
+			
 func _physics_process(delta: float) -> void:
 	var grounded = is_on_floor()
 	# Add the gravity.
@@ -63,12 +75,13 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.offset.x = 0
 			animated_sprite.flip_h = false
 
-
 	if not is_on_floor() and is_falling == false:
 		animated_sprite.play("fall")
 		animated_sprite.offset.y = 5
 		is_falling = true
 		
+	if global_position.y > 1000:
+		respawn()
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
